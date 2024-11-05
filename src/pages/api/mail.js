@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     const subject = query.subject;
 
 
-    // //Increment a Value
+    //Increment a Value
     await redis.incr('count'); 
     
     //Set a Value - set("key", value)
