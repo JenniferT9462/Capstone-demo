@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         html: `<strong>${message}</strong>`,
     }
     //Initialize email sending w/email object from above
-    //await resend.emails.send(email);
+    await resend.emails.send(email);
 
     //Set up ok response
     res.status(200).json({
