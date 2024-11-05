@@ -87,6 +87,7 @@ This project focuses on building a robust server application. It leverages Verce
 
 - Setup query params for the user inputs:
 
+        //Set queries for URL - That later will be used for user inputs
         const query = req.query;
         const name = query.name;
         const message = query.message;
@@ -125,7 +126,25 @@ This project focuses on building a robust server application. It leverages Verce
 
 - Example usage in your code inside an export default async function:
 
-             await redis.set("item", "poop");
-             const result = await redis.get("item");
+             //Set a Value - set("key", value)
+             await redis.set("item", "poop"); 
+             //Get a Value - By calling it's key-"item"
+             const result = await redis.get("item"); 
+
+- You can Increment a Value by adding this to your code:
+
+             //Increment a Value
+             await redis.incr('count'); 
+
+- You can add the result from when you get the value to the response code:
+
+             //Set up ok response
+             res.status(200).json({
+               name: name, subject: subject, message: message, result: result
+             });
 
 - To see that your data is being saved to UpStash -> Got to Vercel -> In your project -> Go to Storage -> Open in UpStash -> From there go to Data Browser. 
+
+### UpStash Screenshot
+
+  ![UpStash](<Upstash.png>)
