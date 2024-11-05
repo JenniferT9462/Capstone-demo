@@ -22,9 +22,10 @@ export default function ContactMePage() {
             });
             if (response.ok) {
                 setStatus('Message sent successfully!');
-                setEmail('') //Clear form fields on success
-                setMessage('');
+                setEmail('') //Clear email field on success
+                setMessage(''); //Clear message field on success
             } else {
+                // If response fails setStatus w/this error message
                 setStatus('Failed to send message. Please try again.');
             }
         } catch (error) {
@@ -36,14 +37,16 @@ export default function ContactMePage() {
         <div className='bg-cyan-700 h-screen'>
             <div>
                 <h1 className='text-4xl '>Contact Me!</h1>
-                {/* Add form and contact information here */}
+                {/* When user submits form execute the handleSubmit function */}
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Email:</label>
                         <input
                             className='text-gray-800'
                             type="email"
+                            //Input requires a value prop
                             value={email}
+                            // On submit setEmail's value
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
@@ -52,15 +55,16 @@ export default function ContactMePage() {
                         <label>Message:</label>
                         <textarea
                             className='text-gray-800'
+                            //Input requires a value prop
                             value={message}
+                            // On submit(event) setMessage's value
                             onChange={(e) => setMessage(e.target.value)}
                             required
                         />
                     </div>
                     <button className='border-4 rounded-md' type="submit">Send Message</button>
-                    {status && <p>{status}</p>} {/*Show success/error message */}
+                    {status && <p>{status}</p>} {/*Show success/error message in a paragraph to display on the page */}
                 </form>
-
             </div>
         </div>
     );
