@@ -58,8 +58,8 @@ This project focuses on building a robust server application. It leverages Verce
 
 ### Part 1 Setup
 
-- Get API Key from resend.com...You will have to sign up a free account. 
-- Add your new key to your .env.local file in the root of your app directory.
+- Get API Key from <https://resend.com>...You will have to sign up a free account. 
+- Add your new key to your `.env.local` file in the root of your app directory.
 - Install resend to your project by running:
 
         npm install resend
@@ -69,7 +69,8 @@ This project focuses on building a robust server application. It leverages Verce
 
         const EMAIL_KEY = process.env.EMAIL_KEY;
 
-- Send email using HTML. Example Code:
+- Send email using HTML.  
+- Example Code:
     
             export default async function handler(req, res) {
                 const email = {
@@ -97,4 +98,34 @@ This project focuses on building a robust server application. It leverages Verce
 
 - Example of result of adding queries to URL:
 
-![JSON Data](<JSON.png>)
+  ![JSON Data](<JSON.png>)
+
+### Part 2 Setup
+
+- Deploy on Vercel 
+  * Make a new project
+  * Save environment variable - API Key from Resend
+
+- From your project on Vercel -> Go to Storage -> Create new DB -> Select UpStash KV.
+
+- Copy the environment variables(will be at top of page in green) created after setting up your new DB and add them to your `.env.local` file.
+
+- In VSCode terminal install redis to your project by running:
+
+             npm install redis
+
+- Import redis to your project by adding this to your code:  
+
+             import { Redis } from '@upstash/redis';
+
+- To initialize redis from the environment variables that you saved in `.env.local` file add this to your API route code:
+
+             // Initialize Redis
+             const redis = Redis.fromEnv();
+
+- Example usage in your code inside an export default async function:
+
+             await redis.set("item", "poop");
+             const result = await redis.get("item");
+
+- To see that your data is being saved to UpStash -> Got to Vercel -> In your project -> Go to Storage -> Open in UpStash -> From there go to Data Browser. 
