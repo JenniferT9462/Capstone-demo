@@ -8,7 +8,7 @@ const redis = Redis.fromEnv();
 
 
 export default async function handler(req, res) {
-    // //Set queries for URL - That later will be used for user inputs
+    //Set queries for URL - That later will be used for user inputs
     // const query = req.query;
     // const name = query.name;
     // const message = query.message;

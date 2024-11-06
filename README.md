@@ -87,6 +87,7 @@ This project focuses on building a robust server application. It leverages Verce
 
 - Setup query params for the user inputs:
 
+        //Set queries for URL - That later will be used for user inputs
         const query = req.query;
         const name = query.name;
         const message = query.message;
@@ -125,7 +126,89 @@ This project focuses on building a robust server application. It leverages Verce
 
 - Example usage in your code inside an export default async function:
 
-             await redis.set("item", "poop");
-             const result = await redis.get("item");
+             //Set a Value - set("key", value)
+             await redis.set("item", "poop"); 
+             //Get a Value - By calling it's key-"item"
+             const result = await redis.get("item"); 
+
+- You can Increment a Value by adding this to your code:
+
+             //Increment a Value
+             await redis.incr('count'); 
+
+- You can add the result from when you get the value to the response code:
+
+             //Set up ok response
+             res.status(200).json({
+               name: name, subject: subject, message: message, result: result
+             });
 
 - To see that your data is being saved to UpStash -> Got to Vercel -> In your project -> Go to Storage -> Open in UpStash -> From there go to Data Browser. 
+
+### UpStash Screenshot
+
+  ![UpStash](<Upstash.png>)
+
+## Part 3 Client-side
+
+### Changes to my API route
+
+- Currently I am using `req.query` as my request. which only works with 'GET' requests. For 'POST', needs `req.body`. So I changed that in my API code Add 'name' to my `req.body`. Before I was just using 'email' and 'message'.
+        
+   * I had to update the requests for both the API route and the handler:
+
+                
+                const { name, email, message } = req.body;
+
+
+        * Instead of:
+        
+                const query = req.query;
+                const name = query.name;
+                const message = query.message;
+                const subject = query.subject;
+
+- I Also add a check to make sure the request is `POST` not `GET`.
+
+   * I did this by adding an `if` statement inside the handler function:
+
+                if (req.method !== 'POST') {
+    	           return 
+                       res.status(405).json({ error: 'Method not allowed' });
+	}
+
+- Made a more standard `emailObject` to include `name`, a new `subject` and `body` that included the user inputs:
+
+                // Set up the email object
+    	        const emailObject = {
+                        from: 'Acme <onboarding@resend.dev>',
+                        to: ['jennifertarleton@gmail.com'],
+                        subject: 'Contact Form Submission',
+                        html: `<p><strong>From:</strong> ${name} (${email})<p>
+                        <p><strong>Message:</strong> ${message}</p>`,
+    	        };
+
+### Changes to my form component
+
+- Since I added `name` to the request body, I had to include a `name` field for it.
+
+                <div>
+                    <label>Name:</label>
+                    	<input
+                           className='text-gray-800'
+                           type="text"
+                           value={name}
+                           onChange={(e) => setName(e.target.value)}
+                           required
+                    	/>
+                </div>
+
+- Had to adjust `fetch` that includes `name` as well in `body`:
+
+                const response = await fetch('/api/mail', {
+            	        method: 'POST',
+            	        headers: {
+                	        'Content-Type': 'application/json',
+            	        },
+            	        body: JSON.stringify({ name, email, message }),
+        	});
