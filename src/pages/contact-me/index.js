@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function ContactMePage() {
-    //useState hook used to store email, message and status
+    //useState hook used to store name, email, message and status
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
