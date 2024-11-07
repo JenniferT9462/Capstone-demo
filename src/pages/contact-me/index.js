@@ -14,13 +14,13 @@ export default function ContactMePage() {
 
         //Call the API w/email and message
         try {
-            const response = await fetch('/api/mail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, message }),
-            });
+            const response = await fetch(`/api/mail?name=${name}&message=${message}&email=${email}`)
+                // method: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json',
+                // },
+                // body: JSON.stringify({ name, email, message }),
+            // });
             if (response.ok) {
                 setStatus('Message sent successfully!');
                 setName(''); //Clear name field on success
