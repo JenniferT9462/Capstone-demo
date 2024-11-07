@@ -11,10 +11,7 @@ const redis = Redis.fromEnv();
 
 //Define an async function to handle incoming requests
 export default async function handler(req, res) {
-    //Set queries for URL - That later will be used for user inputs
-    // const query = req.query;
-    // const name = query.name;
-    // const message = query.message;
+    
     // const subject = query.subject;
 
     // //Check if the HTTP request method is 'POST'
@@ -23,8 +20,13 @@ export default async function handler(req, res) {
     //     return res.status(405).json({ error: 'Method not Allowed'});
     // }
     try {
-        //Destructure name, email and message from the request query
-        const { name, email, message } = req.query;
+        //Destructure name, email and message from the request 
+        // const { name, email, message } = req.query;
+        //Set queries for URL - That later will be used for user inputs
+        // const query = req.query;
+        const name = req.query.name;
+        const message = req.query.message;
+        const email = req.query.email
         // //Validate that all required fields are present
         // if (!name || !email || !message) {
         //     //If any field is missing, respond w/a 400 status (Bad Request)
@@ -34,14 +36,14 @@ export default async function handler(req, res) {
         await redis.incr('count'); 
 
         //Store name and message - set("key", value)
-        await redis.set("name", name); 
-        await redis.set("message", message); 
-        await redis.set("email", email);
+        await redis.set("name:", name); 
+        await redis.set(`message:${name}`, message); 
+        await redis.set(`email:${name}`, email);
 
         //Retrieve stored values - By calling it's key-"item" - for debugging purposes
-        const nameRes = await redis.get("name"); 
-        const messageRes = await redis.get("message");
-        const emailRes = await redis.get("email");
+        const nameRes = await redis.get("name:"); 
+        const messageRes = await redis.get(`message:${name}`);
+        const emailRes = await redis.get(`email:${name}`);
 
         //Set up the email object
         const emailObject = {
