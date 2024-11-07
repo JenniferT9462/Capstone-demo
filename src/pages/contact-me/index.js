@@ -12,7 +12,7 @@ export default function ContactMePage() {
         event.preventDefault();
         setStatus(''); //Reset status message
 
-        //Call the API w/email and message
+        //Call the API w/email, message and name
         try {
             const response = await fetch(`/api/mail?name=${name}&message=${message}&email=${email}`)
                 // method: 'POST',

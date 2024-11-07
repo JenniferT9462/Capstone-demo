@@ -2,13 +2,10 @@
 import { Resend } from 'resend';
 //Import the 'Redis' library to interact w/a redis database
 import { Redis } from '@upstash/redis';
-
 //Set up a constant for the email key from environment variables
 const EMAIL_KEY = process.env.EMAIL_KEY;
-
 //Initialize an instance for Resend w/the email API key
 const resend = new Resend(EMAIL_KEY);
-
 // Initialize Redis connection from environment config
 const redis = Redis.fromEnv();
 
@@ -26,7 +23,7 @@ export default async function handler(req, res) {
     //     return res.status(405).json({ error: 'Method not Allowed'});
     // }
     try {
-        //Destructure name, email and message from the request body
+        //Destructure name, email and message from the request query
         const { name, email, message } = req.query;
         // //Validate that all required fields are present
         // if (!name || !email || !message) {
@@ -53,7 +50,7 @@ export default async function handler(req, res) {
             subject: 'Contact Form Submission',
             html: `<p><strong>From: </strong> ${name} (${email})</p>
                    <p><strong>Message: </strong> ${message}</p>`
-                };
+        };
 
         //Send the email
         await resend.emails.send(emailObject);
