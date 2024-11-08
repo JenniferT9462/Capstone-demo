@@ -12,18 +12,9 @@ const redis = Redis.fromEnv();
 //Define an async function to handle incoming requests
 export default async function handler(req, res) {
     
-    // const subject = query.subject;
-
-    // //Check if the HTTP request method is 'POST'
-    // if (req.method !== 'GET') {
-    //     //If not a POST request, respond w/status 405(Method Not Allowed)
-    //     return res.status(405).json({ error: 'Method not Allowed'});
-    // }
+    
     try {
-        //Destructure name, email and message from the request 
-        // const { name, email, message } = req.query;
         //Set queries for URL - That later will be used for user inputs
-        // const query = req.query;
         const name = req.query.name;
         const message = req.query.message;
         const email = req.query.email
@@ -35,7 +26,7 @@ export default async function handler(req, res) {
          //Increment a Value for tracking purposes
         await redis.incr('count'); 
 
-        //Store name and message - set("key", value)
+        //Store name, message and email - set("key", value)
         await redis.set("name:", name); 
         await redis.set(`message:${name}`, message); 
         await redis.set(`email:${name}`, email);
