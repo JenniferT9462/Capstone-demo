@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Link from "next/link";
 
 export default function ContactMePage() {
     //useState hook used to store name, email, message and status
@@ -39,13 +40,14 @@ export default function ContactMePage() {
     return (
         <div className='bg-cyan-700 h-screen'>
             <div>
-                <h1 className='text-4xl '>Contact Me!</h1>
+                <h1 className='text-4xl'>Contact Me!</h1>
                 {/* When user submits form execute the handleSubmit function */}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}
+                      className="w-2/3 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div className='mb-10'>
-                        <label>Name: </label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Name: </label>
                         <input
-                            className='text-gray-800'
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             type="text"
                             //Input requires a value prop
                             value={name}
@@ -55,9 +57,9 @@ export default function ContactMePage() {
                             />
                     </div>
                     <div>
-                        <label>Email:</label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
                         <input
-                            className='text-gray-800'
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             type="email"
                             //Input requires a value prop
                             value={email}
@@ -67,9 +69,9 @@ export default function ContactMePage() {
                         />
                     </div>
                     <div className='my-10'>
-                        <label>Message:</label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Message:</label>
                         <textarea
-                            className='text-gray-800'
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             //Input requires a value prop
                             value={message}
                             // On submit(event) setMessage's value
@@ -77,10 +79,11 @@ export default function ContactMePage() {
                             required
                         />
                     </div>
-                    <button className='border-4 rounded-md' type="submit">Send Message</button>
-                    {status && <p>{status}</p>} {/*Show success/error message in a paragraph to display on the page */}
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Send Message</button>
+                    {status && <p className='text-gray-700'>{status}</p>} {/*Show success/error message in a paragraph to display on the page */}
                 </form>
             </div>
+            <Link href="get-messages" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Get Message</Link>
         </div>
     );
 }
