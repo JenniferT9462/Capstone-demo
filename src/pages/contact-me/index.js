@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from "next/link";
+import Navbar from '@/components/NavBar';
 
 export default function ContactMePage() {
     //useState hook used to store name, email, message and status
@@ -39,6 +40,7 @@ export default function ContactMePage() {
 
     return (
         <div className='bg-cyan-700 h-screen'>
+            <Navbar/>
             <div>
                 <h1 className='text-4xl'>Contact Me!</h1>
                 {/* When user submits form execute the handleSubmit function */}
@@ -83,7 +85,6 @@ export default function ContactMePage() {
                     {status && <p className='text-gray-700'>{status}</p>} {/*Show success/error message in a paragraph to display on the page */}
                 </form>
             </div>
-            <Link href="get-messages" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Get Message</Link>
         </div>
     );
 }

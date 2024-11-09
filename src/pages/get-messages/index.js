@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import Link from "next/link";
+import Navbar from "@/components/NavBar";
 
 export default function MessagePage() {
     const [name, setName] = useState("");
@@ -21,6 +21,7 @@ export default function MessagePage() {
 
     return (
         <div className='bg-cyan-700 h-screen'>
+            <Navbar/>
             <h1 className='text-4xl'>Messages</h1>
             
             <form onSubmit={handleSubmit}
@@ -32,7 +33,7 @@ export default function MessagePage() {
                     onChange={(e) => setName(e.target.value)}
                 />
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Get Message</button>
-                <Link href="contact-me" className="bg-blue-500 hover:bg-blue-700 text-white font-bold ml-4 py-3 px-2 rounded">Contact Me</Link>
+                {/* <Link href="contact-me" className="bg-blue-500 hover:bg-blue-700 text-white font-bold ml-4 py-3 px-2 rounded">Contact Me</Link> */}
             </form>
             <div className="w-2/3 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <h2 className="text-2xl text-gray-700">Saved Message</h2>
