@@ -12,7 +12,7 @@ This project focuses on building a robust server application. It leverages Verce
 
 This architecture facilitates the process of receiving messages from users through a contact form and then sending those messages as emails while also keeping a record in a datastore. 
 
-![Data Flow](<dataFlowDiagram.png>)
+![Data Flow](</public/dataFlowDiagram.png>)
 
 ## Setup
 
@@ -35,7 +35,7 @@ This architecture facilitates the process of receiving messages from users throu
     
 - You will then be asked a series of questions...
 
-    ![terminal questions](<nextQuestions.png>)
+    ![terminal questions](</public/nextQuestions.png>)
 
 - Navigate to your new project by running:
 
@@ -107,7 +107,7 @@ This architecture facilitates the process of receiving messages from users throu
 
 - Example of result of adding queries to URL:
 
-  ![JSON Data](<JSON.png>)
+  ![JSON Data](</public/JSON.png>)
 
 ### Part 2 Setup
 
@@ -156,7 +156,7 @@ This architecture facilitates the process of receiving messages from users throu
 
 ### UpStash Screenshot
 
-  ![UpStash](<Upstash.png>)
+  ![UpStash](</public/Upstash.png>)
 
 ## API Route to send Email
 
@@ -203,9 +203,9 @@ This architecture facilitates the process of receiving messages from users throu
 
 ## Email 
 
-![Screenshot of Email](<emailScreenshot.png>)
+![Screenshot of Email](</public/emailScreenshot.png>)
 
-![Screenshot of Email](<email2Screenshot.png>)
+![Screenshot of Email](</public/email2Screenshot.png>)
 
 ## Testing
 
@@ -215,11 +215,11 @@ I tested the API endpoints with postman. I also added error handling to the code
 
 #### Send Email API
 
-![Send Email API](<emailPostman.png>)
+![Send Email API](</public/emailPostman.png>)
 
 #### Get Stored Messages API
 
-![Get Stored Messages](<messagePostman.png>)
+![Get Stored Messages](</public/messagePostman.png>)
 
 ## Reflection
 
