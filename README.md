@@ -1,5 +1,9 @@
 # Email & Data Server
 
+**Deployed Link contact-me page:** <https://capstone-demo-ruddy.vercel.app/contact-me>
+
+**Deployed Link to get stored messages page:** <https://capstone-demo-ruddy.vercel.app/get-messages>
+
 This project focuses on building a robust server application. It leverages Vercel and Upstash to securely store user data, while Resend API powers efficient email communication. By completing this project, you'll gain hands-on experience in server development, data storage, and email integration.
 
 ## Diagram of Data flow
@@ -180,6 +184,49 @@ This architecture facilitates the process of receiving messages from users throu
 ## Client Side - Form Handling
 
 - In the `pages` directory make a new directory for the `contact-me` page. Then create a file called `index.js`. 
+- In the new file import `useState`:
+```javascript
+        import { useState } from 'react';
+```
+- Use `useState` to store the state variables and a setter function to update the state variables for `name`, `email` and `message`. 
+```javascript
+        const [name, setName] = useState('');
+        const [email, setEmail] = useState('');
+        const [message, setMessage] = useState('');
+```
+- Use `fetch` with the endpoint `/api/mail?name=${name}&message=${message}&email=${email}`
+- In the form's inputs we set the value to their corresponding  state variables. Example: `value={name}`.
+- Set the values of the state variables with `onChange` on the inputs. For this I used an arrow function inside of the `onChange` attribute on the inputs. Example: `onChange={(e) => setName(e.target.value)}` 
+- I attached the `handleSubmit` function to the form. So, when the user clicks the button to send email the `handleSubmit` function calls the API route and sends the message with its inputted data. 
+
+## Testing
+
+I tested the API endpoints with postman. I also added error handling to the code for the API and the fetch code to ensure that everything is working and if it failed I would know where it happened in my code. I also added a status state variable to display a message saying that the message was sent or if it failed to let the user know the status of their message. 
+
+### Screenshot of Postman Testing
+
+#### Send Email API
+
+![Send Email API](<emailPostman.png>)
+
+#### Get Stored Messages API
+
+![Get Stored Messages](<messagePostman.png>)
+
+## Reflection
+
+In developing this project I gained skills in backend services, including Vercel for deployment, Resend for email handling and Upstash for data storage. It also help me with a better understanding of how to securely store API keys and other environment variables. Using React's `useState`and connecting it to Next.js API routes was especially valuable in setting up the client-side. 
+
+A challenge for me was the setup for Resend and Upstash. Getting the environment variables for Upstash and importing everything to my project was extensive but, after this project I am confident that it we be a smoother production for me in the future. Another challenge was the form and making sure I had my state variables set up right to the correct inputs. It was a little confusing understanding how the request queries were connected to the fetch endpoint. 
+
+
+
+
+
+
+
+
+
 
 
 
