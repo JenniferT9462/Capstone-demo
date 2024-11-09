@@ -31,6 +31,16 @@ export default async function handler(req, res) {
         await redis.set(`message:${name}`, message); 
         await redis.set(`email:${name}`, email);
 
+         // Push the message to Upstash
+        const messageData = {
+            name,
+            email,
+            message,
+            timestamp: new Date().toISOString(),
+        };
+        await redis.lpush('messages', JSON.stringify(messageData));
+
+
         //Retrieve stored values - By calling it's key-"item" - for debugging purposes
         const nameRes = await redis.get("name:"); 
         const messageRes = await redis.get(`message:${name}`);
