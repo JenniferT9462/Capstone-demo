@@ -1,6 +1,8 @@
 # Email & Data Server
 
-**Deployed Link contact-me page:** <https://capstone-demo-ruddy.vercel.app/contact-me>
+**Deployed Link to Home Page** <https://capstone-demo-ruddy.vercel.app>
+
+**Deployed Link to contact-me page:** <https://capstone-demo-ruddy.vercel.app/contact-me>
 
 **Deployed Link to get stored messages page:** <https://capstone-demo-ruddy.vercel.app/get-messages>
 
@@ -198,6 +200,12 @@ This architecture facilitates the process of receiving messages from users throu
 - In the form's inputs we set the value to their corresponding  state variables. Example: `value={name}`.
 - Set the values of the state variables with `onChange` on the inputs. For this I used an arrow function inside of the `onChange` attribute on the inputs. Example: `onChange={(e) => setName(e.target.value)}` 
 - I attached the `handleSubmit` function to the form. So, when the user clicks the button to send email the `handleSubmit` function calls the API route and sends the message with its inputted data. 
+
+## Email 
+
+![Screenshot of Email](<emailScreenshot.png>)
+
+![Screenshot of Email](<email2Screenshot.png>)
 
 ## Testing
 
