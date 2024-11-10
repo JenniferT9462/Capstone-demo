@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     try {
         //Store unique token and user email to Upstash
         // await redis2.set(email, token, { ex: 900 }); // 900 seconds = 15 minutes
-        await redis2.set(`magic_token:${token}`, email);
+        await redis2.set(`magic_token:${token}`, email, { ex: 900 });
     } catch (error) {
         console.error("Error storing token in Redis:", error);
         return res.status(500).json({ error: 'Internal server error' });
