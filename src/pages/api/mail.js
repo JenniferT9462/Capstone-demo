@@ -1,4 +1,4 @@
-//Import the 'Resend' library to send emaila
+//Import the 'Resend' library to send emails
 import { Resend } from 'resend';
 //Import the 'Redis' library to interact w/a redis database
 import { Redis } from '@upstash/redis';
