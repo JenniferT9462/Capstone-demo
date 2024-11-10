@@ -263,6 +263,22 @@ I tested the API endpoints with postman. I also added error handling to the code
 
 ![Get Stored Messages](</public/messagePostman.png>)
 
+#### Send Magic Link
+
+![Send Magic Link](</public/magicLinkPostman.png>)
+
+#### Validate Token
+
+![Validate Token](</public/validateTokenPostman.png>)
+
+#### Add Favorite Item
+
+![Add Favorite](</public/addFavoritePostman.png>)
+
+#### Get Favorite Item
+
+![Get Favorite](</public/getFavoritePostman.png>)
+
 ## Reflection
 
 In developing this project I gained skills in backend services, including Vercel for deployment, Resend for email handling and Upstash for data storage. It also help me with a better understanding of how to securely store API keys and other environment variables. Using React's `useState`and connecting it to Next.js API routes was especially valuable in setting up the client-side. 
