@@ -207,6 +207,48 @@ This architecture facilitates the process of receiving messages from users throu
 
 ![Screenshot of Email](</public/email2Screenshot.png>)
 
+## Magic-Link
+
+### How Magic Link is Generated
+
+- **User Input:** The user provides their email address on the login page. 
+- **Token Creation:** The API is setup to generate a time-limited token as a temporary identifier. 
+- **Link Construction:** The generated token is embedded within a URL, creating the `magic-link`. 
+- **Email Delivery:** The link is then sent to the user's provided email address. 
+
+### Purpose of the Token
+When the user clicks the `magic link`:
+- **Token Validation:** The server receives the request containing the token. 
+- **Token Verification:** The server checks if the token is valid, meaning it hasn't expired and hasn't been compromised. 
+- **User Authentication:** If the token is valid, the server authenticates the user associated with that token. 
+- **Session Establishment:** A session is created for the user, allowing them access to the application or service. 
+
+## User Data Storage and Retrieval
+
+### Storing User Favorites
+
+The `api/add-favorites` endpoint allows users to store a favorite item associated with their email address. This endpoint is protected by token-based authentication.
+- User sends a `POST` request with their email, favorite item and token.
+- The `token` is verified against the stored `magic-link` token in Upstash.
+- If the token is valid, the favorite item is stored in Upstash. 
+
+**Example:**
+```json
+POST /api/add-favorite
+{
+        "email": "example@gmail.com",
+        "favorite": "Cats",
+        "token": "fjkdsl;ajfie8"
+}
+```
+### Retrieving User Favorites
+
+The `api/get-favorites` endpoint retrieves the favorite item for a specific user by `email`. 
+
+**Example:**
+
+`GET /api/get-favorite?email=example@gmail.com`
+
 ## Testing
 
 I tested the API endpoints with postman. I also added error handling to the code for the API and the fetch code to ensure that everything is working and if it failed I would know where it happened in my code. I also added a status state variable to display a message saying that the message was sent or if it failed to let the user know the status of their message. 
