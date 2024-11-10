@@ -33,7 +33,7 @@ export default function Messages() {
     }, []);
 
     return (
-        <div className='bg-cyan-700 h-screen'>
+        <div className='bg-cyan-700'>
             <Navbar/>
             <h1 className="text-4xl">Messages</h1>
              {/* Button to refresh messages */}
