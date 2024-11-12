@@ -4,10 +4,69 @@ This project is a Planner App that is similar to a Bullet Journal. Users can log
 
 <!-- Email Server README.md -->
 [![Email Server](https://img.shields.io/badge/server-email--readme-blue?style=flat-square)](/README-email-server.md)
+<!-- Check list of requirements README.md -->
+[![Requirements](https://img.shields.io/badge/checkList-readme-blue?style=flat-square)](/README-checklist.md)
+
 
 ## Daily Log of Development
 
 ### Day 1 
+
+#### Tasks Completed
+- Set up main readme with daily logs.
+- Draft wireframes and workflows.
+- List components and APIs that will be used.
+
+#### Challenges and Solutions
+- After mapping out features that I want, it seems that it may be too much to actually accomplish. May have to narrow them down a little. 
+
+#### Next Steps
+- Finalize wireframes.
+- Finalize APIs
+
+### Day 2 
+
+#### Tasks Completed
+- 
+
+#### Challenges and Solutions
+-
+
+#### Next Steps
+- 
+
+### Day 3 
+
+#### Tasks Completed
+- 
+
+#### Challenges and Solutions
+-
+
+#### Next Steps
+- 
+
+### Day 4 
+
+#### Tasks Completed
+- 
+
+#### Challenges and Solutions
+-
+
+#### Next Steps
+- 
+
+### Day 5 
+
+#### Tasks Completed
+- 
+
+#### Challenges and Solutions
+-
+
+#### Next Steps
+- 
 
 
 
