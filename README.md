@@ -7,6 +7,17 @@ This project is a Planner App that is similar to a Bullet Journal. Users can log
 <!-- Check list of requirements README.md -->
 [![Requirements](https://img.shields.io/badge/checkList-readme-blue?style=flat-square)](/README-checklist.md)
 
+## Planning & Wireframes
+
+### `Wireframes`
+
+![wireframe-1](</public/wireframe-1.png>)
+![wireframe-2](</public/wireframe-2.png>)
+
+### `Planning`
+#### `Features`
+![features](</public/features.png>)
+![components](</public/components.png>)
 
 ## Daily Log of Development
 
