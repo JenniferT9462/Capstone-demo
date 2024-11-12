@@ -8,7 +8,7 @@ This project is a Planner App that is similar to a Bullet Journal. Users can log
 [![Requirements](https://img.shields.io/badge/checkList-readme-blue?style=flat-square)](/README-checklist.md)
 
 ## Planning & Wireframes
-
+- Link to canva <https://www.canva.com/design/DAGWHh9pHxM/7Vngc17x6X--vMDgEf5gqA/edit>
 ### `Wireframes`
 
 ![wireframe-1](</public/wireframe-1.png>)
