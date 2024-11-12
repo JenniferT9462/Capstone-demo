@@ -47,7 +47,6 @@ export default async function handler(req, res) {
     }
     
     //Construct magic link url
-    // const magicLink = `http://localhost:3000/login?token=${token}`;
     const magicLink = `${process.env.KV_REST_API_URL}/login?token=${token}`
 
     //Set up the email object
