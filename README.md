@@ -9,13 +9,15 @@ This project is a Planner App that is similar to a Bullet Journal. Users can log
 
 ## Planning & Wireframes
 - Link to canva <https://www.canva.com/design/DAGWHh9pHxM/7Vngc17x6X--vMDgEf5gqA/edit>
-### `Wireframes`
 
+### `Wireframes`
+<!-- TODO: May have to update later -->
 ![wireframe-1](</public/wireframe-1.png>)
 ![wireframe-2](</public/wireframe-2.png>)
 
 ### `Planning`
 #### `Features`
+<!-- TODO: May have to update later -->
 ![features](</public/features.png>)
 ![components](</public/components.png>)
 
@@ -38,7 +40,7 @@ This project is a Planner App that is similar to a Bullet Journal. Users can log
 ### Day 2 
 
 #### Tasks Completed
-- 
+- Start on HabitTracker
 
 #### Challenges and Solutions
 -
