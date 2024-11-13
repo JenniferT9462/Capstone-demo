@@ -24,6 +24,8 @@ export default function Calendar() {
   const currentDate = new Date();
   const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
   const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [showEventPopup, setShowEventPopup] = useState(false);
 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
@@ -42,7 +44,24 @@ export default function Calendar() {
     );
   };
 
-  console.log(daysInMonth, firstDayOfMonth);
+  const handleDayClick = (day) => {
+    const clickedDate = new Date(currentYear, currentMonth, day);
+    const today = new Date();
+
+    if (clickedDate >= today || isSameDay(clickedDate, today)) {
+        setSelectedDate(clickedDate)
+        setShowEventPopup(true)
+    }
+  }
+
+  const isSameDay = (date1, date2) => {
+    return (
+        date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getDate() === date2.getDate() 
+    )
+  }
+//   console.log(daysInMonth, firstDayOfMonth);
   return (
     <div className="calendar-app">
       <div className="calendar">
@@ -80,6 +99,7 @@ export default function Calendar() {
                   ? "current-day"
                   : ""
               }
+              onClick={() => handleDayClick(day + 1)}
             >
               {day + 1}
             </span>
@@ -87,30 +107,33 @@ export default function Calendar() {
         </div>
       </div>
       <div className="events">
-        <div className="event-popup">
-          <div className="time-input">
-            <div className="event-popup-time">Time</div>
-            <input
-              type="number"
-              name="hours"
-              min={0}
-              max={24}
-              className="hours"
-            />
-            <input
-              type="number"
-              name="minutes"
-              min={0}
-              max={60}
-              className="minutes"
-            />
+        {showEventPopup && (
+            <div className="event-popup">
+            <div className="time-input">
+              <div className="event-popup-time">Time</div>
+              <input
+                type="number"
+                name="hours"
+                min={0}
+                max={24}
+                className="hours"
+              />
+              <input
+                type="number"
+                name="minutes"
+                min={0}
+                max={60}
+                className="minutes"
+              />
+            </div>
+            <textarea placeholder="Enter Event Text (Maximum 60 Characters)"></textarea>
+            <button className="event-popup-btn">Add Event</button>
+            <button className="close-event-popup" onClick={() => setShowEventPopup(false)}>
+              <AiOutlineClose size={18} />
+            </button>
           </div>
-          <textarea placeholder="Enter Event Text (Maximum 60 Characters)"></textarea>
-          <button className="event-popup-btn">Add Event</button>
-          <button className="close-button">
-            <AiOutlineClose size={18} />
-          </button>
-        </div>
+        )}
+        
         <div className="event">
           <div className="event-date-wrapper">
             <div className="event-date">Nov 13, 2024</div>
