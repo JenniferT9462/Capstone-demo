@@ -28,6 +28,20 @@ export default function Calendar() {
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
+  const prevMonth = () => {
+    setCurrentMonth((prevMonth) => (prevMonth === 0 ? 11 : prevMonth - 1));
+    setCurrentYear((prevYear) =>
+      currentMonth === 0 ? prevYear - 1 : prevYear
+    );
+  };
+
+  const nextMonth = () => {
+    setCurrentMonth((prevMonth) => (prevMonth === 11 ? 0 : prevMonth + 1));
+    setCurrentYear((prevYear) =>
+      currentMonth === 11 ? prevYear + 1 : prevYear
+    );
+  };
+
   console.log(daysInMonth, firstDayOfMonth);
   return (
     <div className="calendar-app">
@@ -36,13 +50,13 @@ export default function Calendar() {
           <h1 className="text-4xl">Calendar</h1>
         </div>
         <div className="nav-date">
-          <h2 className="month">November,</h2>
-          <h2 className="year">2024</h2>
+          <h2 className="month">{monthsOfYear[currentMonth]},</h2>
+          <h2 className="year">{currentYear}</h2>
           <div className="buttons">
-            <button>
+            <button onClick={prevMonth}>
               <FaArrowLeft size={14} />
             </button>
-            <button>
+            <button onClick={nextMonth}>
               <FaArrowRight size={14} />
             </button>
           </div>
@@ -57,7 +71,18 @@ export default function Calendar() {
             <span key={`empty-${index}`} />
           ))}
           {[...Array(daysInMonth).keys()].map((day) => (
-            <span key={day + 1}>{day + 1}</span>
+            <span
+              key={day + 1}
+              className={
+                day + 1 === currentDate.getDate() &&
+                currentMonth === currentDate.getMonth() &&
+                currentYear === currentDate.getFullYear()
+                  ? "current-day"
+                  : ""
+              }
+            >
+              {day + 1}
+            </span>
           ))}
         </div>
       </div>
