@@ -1,21 +1,38 @@
 import React from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
+import Logo from './Logo';
 
 export default function Navbar() {
   return (
-    <nav className="bg-gray-800 text-white">
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
-        <div className="flex items-center">
-          <Link href="/" className="text-xl font-bold">Email Server</Link>
+    
+      
+    <nav className="bg-blue-600 px-4 py-2 flex items-center justify-between">
+    <div className='flex items-center space-x-2'>
+        <div>
+          {/* Logo */}
+          <Logo/>
         </div>
-        <div className="hidden md:flex items-center space-x-4">
-          <Link href="/" className="hover:text-gray-300">Home</Link>
-          <Link href="/contact-me" className="hover:text-gray-300">Contact Me</Link>
-          <Link href="/get-messages" className="hover:text-gray-300">Get Message</Link>
-          <Link href="/all-messages" className="hover:text-gray-300">All Messages</Link>
-        </div>
+        <h1 className="text-xl font-bold">
+          Planner App
+        </h1>
+      </div>
+      {/* Nav links */}
+      <div className="flex space-x-4 md:space-x-2">
+          <Link href="/" className="text-white text-xl md:text-sm hover:text-blue-300">
+            Home
+          </Link>
+          <Link href="/Calendar" className="text-white text-xl md:text-sm hover:text-blue-300">
+            Calendar
+          </Link>
+          <Link href="/Habits" className="text-white text-xl md:text-sm hover:text-blue-300">
+            Habits
+          </Link>
+          <Link href="/journal" className="text-white text-xl md:text-sm hover:text-blue-300">
+            Journal
+          </Link>
       </div>
     </nav>
+    
   );
 }
