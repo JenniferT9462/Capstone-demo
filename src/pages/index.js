@@ -9,7 +9,7 @@ export default function Home() {
       <header className="text-center p-8">
         <h1 className="text-6xl font-bold text-white mb-4">Welcome to the Planner App</h1>
         <p className="text-lg md:text-xl font-light mb-6">Track your habits, organize your schedule, and reflect on your journey.</p>
-        <Link href="/contact-me" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded-md">
+        <Link href="/welcome" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded-md">
           Get Started
         </Link>
       </header>
