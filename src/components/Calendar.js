@@ -84,43 +84,46 @@ export default function Calendar() {
     if (editingEvent) {
       updatedEvents = updatedEvents.map((event) =>
         event.id === editingEvent.id ? newEvent : event
-      )
+      );
     } else {
-        updatedEvents.push(newEvent)
-      }
-    
-    updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date))
+      updatedEvents.push(newEvent);
+    }
+
+    updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     setEvents(updatedEvents);
     setEventTime({ hours: "00", minutes: "00" });
     setEventText("");
     setShowEventPopup(false);
-    setEditingEvent(null)
+    setEditingEvent(null);
   };
 
   //Editing function
   const handleEditEvent = (event) => {
-    setSelectedDate(new Date(event.date))
+    setSelectedDate(new Date(event.date));
     setEventTime({
-        hours: event.time.split(":")[0],
-        minutes: event.time.split(":")[1]
+      hours: event.time.split(":")[0],
+      minutes: event.time.split(":")[1],
     });
     setEventText(event.text);
     setEditingEvent(event);
     setShowEventPopup(true);
-  }
-  
+  };
+
   //Handle deleting events
   const handleEventDelete = (eventId) => {
-    const updatedEvents = events.filter((event) => event.id !== eventId)
+    const updatedEvents = events.filter((event) => event.id !== eventId);
     setEvents(updatedEvents);
-  }
+  };
 
   //Handle time change
   const handleTimeChange = (e) => {
-    const { name, value} = e.target
-    setEventTime((prevTime) => ({...prevTime, [name]: value.padStart(2, '0')}))
-  }
+    const { name, value } = e.target;
+    setEventTime((prevTime) => ({
+      ...prevTime,
+      [name]: value.padStart(2, "0"),
+    }));
+  };
 
   return (
     <div className="calendar-app">
@@ -220,10 +223,16 @@ export default function Calendar() {
             </div>
             <div className="event-text">{event.text}</div>
             <div className="event-buttons">
-              <button className="edit-btn" onClick={() => handleEditEvent(event)}>
+              <button
+                className="edit-btn"
+                onClick={() => handleEditEvent(event)}
+              >
                 <AiFillEdit /> {/* Edit icon */}
               </button>
-              <button className="X-icon-btn" onClick={() => handleEventDelete(event.id)}>
+              <button
+                className="X-icon-btn"
+                onClick={() => handleEventDelete(event.id)}
+              >
                 <BiMessageSquareX /> {/* Message with X icon */}
               </button>
             </div>
