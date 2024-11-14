@@ -29,6 +29,7 @@ export default function Calendar() {
   const [events, setEvents] = useState([]);
   const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
+  const [editingEvent, setEditingEvent] = useState(null);
 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
@@ -56,6 +57,7 @@ export default function Calendar() {
       setShowEventPopup(true);
       setEventTime({ hours: "00", minutes: "00" });
       setEventText("");
+      setEditingEvent(null);
     }
   };
 
@@ -69,6 +71,7 @@ export default function Calendar() {
 
   const handleEventSubmit = () => {
     const newEvent = {
+      id: editingEvent ? editingEvent.id : Date.now(),
       date: selectedDate,
       time: `${eventTime.hours.padStart(2, "0")}:${eventTime.minutes.padStart(
         2,
@@ -76,12 +79,49 @@ export default function Calendar() {
       )}`,
       text: eventText,
     };
-    setEvents([...events, newEvent]);
+    let updatedEvents = [...events];
+
+    if (editingEvent) {
+      updatedEvents = updatedEvents.map((event) =>
+        event.id === editingEvent.id ? newEvent : event
+      )
+    } else {
+        updatedEvents.push(newEvent)
+      }
+    
+    updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date))
+
+    setEvents(updatedEvents);
     setEventTime({ hours: "00", minutes: "00" });
     setEventText("");
     setShowEventPopup(false);
+    setEditingEvent(null)
   };
-  //   console.log(daysInMonth, firstDayOfMonth);
+
+  //Editing function
+  const handleEditEvent = (event) => {
+    setSelectedDate(new Date(event.date))
+    setEventTime({
+        hours: event.time.split(":")[0],
+        minutes: event.time.split(":")[1]
+    });
+    setEventText(event.text);
+    setEditingEvent(event);
+    setShowEventPopup(true);
+  }
+  
+  //Handle deleting events
+  const handleEventDelete = (eventId) => {
+    const updatedEvents = events.filter((event) => event.id !== eventId)
+    setEvents(updatedEvents);
+  }
+
+  //Handle time change
+  const handleTimeChange = (e) => {
+    const { name, value} = e.target
+    setEventTime((prevTime) => ({...prevTime, [name]: value.padStart(2, '0')}))
+  }
+
   return (
     <div className="calendar-app">
       <div className="calendar">
@@ -138,9 +178,7 @@ export default function Calendar() {
                 max={24}
                 className="hours"
                 value={eventTime.hours}
-                onChange={(e) =>
-                  setEventTime({ ...eventTime, hours: e.target.value })
-                }
+                onChange={handleTimeChange}
               />
               <input
                 type="number"
@@ -149,9 +187,7 @@ export default function Calendar() {
                 max={60}
                 className="minutes"
                 value={eventTime.minutes}
-                onChange={(e) =>
-                  setEventTime({ ...eventTime, minutes: e.target.value })
-                }
+                onChange={handleTimeChange}
               />
             </div>
             <textarea
@@ -163,10 +199,9 @@ export default function Calendar() {
                 }
               }}
             ></textarea>
-            <button 
-                className="event-popup-btn"
-                onClick={handleEventSubmit}
-                >Add Event</button>
+            <button className="event-popup-btn" onClick={handleEventSubmit}>
+              {editingEvent ? "Update Event" : "Add Event"}
+            </button>
             <button
               className="close-event-popup"
               onClick={() => setShowEventPopup(false)}
@@ -185,10 +220,10 @@ export default function Calendar() {
             </div>
             <div className="event-text">{event.text}</div>
             <div className="event-buttons">
-              <button className="edit-btn">
+              <button className="edit-btn" onClick={() => handleEditEvent(event)}>
                 <AiFillEdit /> {/* Edit icon */}
               </button>
-              <button className="X-icon-btn">
+              <button className="X-icon-btn" onClick={() => handleEventDelete(event.id)}>
                 <BiMessageSquareX /> {/* Message with X icon */}
               </button>
             </div>
