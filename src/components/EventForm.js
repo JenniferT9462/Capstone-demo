@@ -1,11 +1,19 @@
 import { AiOutlineClose } from "react-icons/ai";
 
 //This component shows a popup form for entering or editing an event.
-export default function EventForm() {
+export default function EventForm({ onClose, selectedDate }) {
     return (
         <div className="bg-white text-blue-500 shadow-md hover:shadow-lg rounded-lg p-6 w-80">
             <h2 className="text-xl font-semibold mb-4 text-center">Event Form</h2>
             <form className="space-y-4">
+                <button
+                    type="button"
+                    className="text-red-500 hover:text-red-600 focus:outline-none"
+                    onClick={onClose}
+                >
+                    <AiOutlineClose size={18} />
+                    
+                </button>
                 {/* Time Inputs */}
                 <div>
                     <label htmlFor="hours" className="block text-sm font-medium mb-1">Time</label>
@@ -59,13 +67,7 @@ export default function EventForm() {
                     >
                         Add Event
                     </button>
-                    <button
-                        type="button"
-                        className="text-red-500 hover:text-red-600 focus:outline-none"
-                    >
-                    <AiOutlineClose size={18} />
-                    {/* onClick={() => setShowEventPopup(false)} */}
-                    </button>
+                    
                 </div>
             </form>
         </div>
