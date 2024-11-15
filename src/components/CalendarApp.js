@@ -30,7 +30,7 @@ export default function CalendarApp() {
         );
       };
 
-      console.log("Current Month in CalendarApp:", currentMonth);
+      // console.log("Current Month in CalendarApp:", currentMonth);
 
       //Week days
       //Static component without state or logic needed
@@ -41,19 +41,29 @@ export default function CalendarApp() {
 
     //When a day is clicked
     const [selectedDate, setSelectedDate] = useState(currentDate);
+
+    //State for showing the event form
+    const [showEventPopup, setShowEventPopup] = useState(false);
+
     const handleDayClick = (day) => {
         const clickedDate = new Date(currentYear, currentMonth, day);
         const today = new Date();
     
         if (clickedDate >= today || isSameDay(clickedDate, today)) {
           setSelectedDate(clickedDate);
-        //   setShowEventPopup(true);
+          setShowEventPopup(true);
         //   setEventTime({ hours: "00", minutes: "00" });
         //   setEventText("");
         //   setEditingEvent(null);
         }
         console.log('Day has been clicked')
       };
+
+    //Handle close popup
+    const handleClosePopup = () => {
+      setShowEventPopup(false);
+      setSelectedDate(null);
+    }
 
     //Allows users to click the same day
     const isSameDay = (date1, date2) => {
@@ -88,8 +98,13 @@ export default function CalendarApp() {
                       onDayClick={handleDayClick}
                   />
                 </div>
+                {showEventPopup && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <EventForm onClose={handleClosePopup} selectedDate={selectedDate}/>
+                  </div>
+                )}
                 
-                <EventForm />
+                
   	            {/* <EventsList ... /> */}            
             </div>
         </div>
