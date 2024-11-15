@@ -2,8 +2,8 @@
 
 export default function DaysGrid({daysInMonth, firstDayOfMonth, currentDate, currentMonth, currentYear, onDayClick}) {
     return (
-      <div className="w-1/3">
-        <div className="grid grid-cols-7">
+      <div className="w-full py-2">
+        <div className="grid grid-cols-7 gap-x-6">
           {/* Empty slots for the days before the first day of the month */}
           {[...Array(firstDayOfMonth).keys()].map((_, index) => (
             <span key={`empty-${index}`}/>
