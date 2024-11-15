@@ -2,7 +2,7 @@
 
 export default function DaysGrid({daysInMonth, firstDayOfMonth, currentDate, currentMonth, currentYear, onDayClick}) {
     return (
-        <div className="days">
+        <div>
           {[...Array(firstDayOfMonth).keys()].map((_, index) => (
             <span key={`empty-${index}`} />
           ))}

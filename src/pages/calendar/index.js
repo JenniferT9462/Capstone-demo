@@ -5,9 +5,8 @@ import CalendarApp from "@/components/CalendarApp";
 
 export default function CalendarPage() {
     return (
-        <div className='container'>
+        <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
             <CalendarApp/>
-            
         </div>
     );
 }
