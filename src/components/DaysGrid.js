@@ -2,10 +2,13 @@
 
 export default function DaysGrid({daysInMonth, firstDayOfMonth, currentDate, currentMonth, currentYear, onDayClick}) {
     return (
-        <div>
+      <div className="w-1/3">
+        <div className="grid grid-cols-7">
+          {/* Empty slots for the days before the first day of the month */}
           {[...Array(firstDayOfMonth).keys()].map((_, index) => (
-            <span key={`empty-${index}`} />
+            <span key={`empty-${index}`}/>
           ))}
+          {/* Days of the month */}
           {[...Array(daysInMonth).keys()].map((day) => (
             <span
               key={day + 1}
@@ -13,8 +16,8 @@ export default function DaysGrid({daysInMonth, firstDayOfMonth, currentDate, cur
                 day + 1 === currentDate.getDate() &&
                 currentMonth === currentDate.getMonth() &&
                 currentYear === currentDate.getFullYear()
-                  ? "current-day"
-                  : ""
+                  ? "bg-white text-blue-600 rounded-md cursor-pointer"
+                  : "cursor-pointer"
               }
               onClick={() => onDayClick(day + 1)}
             >
@@ -22,5 +25,10 @@ export default function DaysGrid({daysInMonth, firstDayOfMonth, currentDate, cur
             </span>
           ))}
         </div>
-    );
-}
+      </div>
+        
+    )
+  }
+        
+        
+    
