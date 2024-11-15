@@ -69,23 +69,26 @@ export default function CalendarApp() {
 
     return (
         <div>
-            <div>
+            <div className="py-2">
                 {/* All components needed for Calendar */}
-                <CalendarHeading
-                    currentYear={currentYear}
-                    currentMonth={currentMonth}
-                    onPrevMonth={prevMonth}
-                    onNextMonth={nextMonth}
-                />
-                <WeekDays />
-                <DaysGrid
-                    daysInMonth={daysInMonth}
-                    firstDayOfMonth={firstDayOfMonth}
-                    currentDate={currentDate}
-                    currentMonth={currentMonth}
-                    currentYear={currentYear}
-                    onDayClick={handleDayClick}
-                />
+                <div className="border-2 rounded-md inline-block w-fit">
+                  <CalendarHeading
+                      currentYear={currentYear}
+                      currentMonth={currentMonth}
+                      onPrevMonth={prevMonth}
+                      onNextMonth={nextMonth}
+                  />
+                  <WeekDays />
+                  <DaysGrid
+                      daysInMonth={daysInMonth}
+                      firstDayOfMonth={firstDayOfMonth}
+                      currentDate={currentDate}
+                      currentMonth={currentMonth}
+                      currentYear={currentYear}
+                      onDayClick={handleDayClick}
+                  />
+                </div>
+                
                 <EventForm />
   	            {/* <EventsList ... /> */}            
             </div>
