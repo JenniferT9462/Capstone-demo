@@ -1,10 +1,13 @@
-import Calendar from "@/components/Calendar";
+import CalendarApp from "@/components/CalendarApp";
+
+
 
 
 export default function CalendarPage() {
     return (
         <div className='container'>
-            <Calendar/>
+            <CalendarApp/>
+            
         </div>
     );
 }
