@@ -2,7 +2,7 @@ import React from "react";
 import CalendarHeading from "./CalendarHeading";
 import WeekDays from './WeekDays';
 import DaysGrid from './DaysGrid';
-// import EventPopup from './EventPopup';
+import EventForm from "./EventForm";
 // import EventsList from './EventsList';
 // import { monthsOfYear, daysOfWeek } from "./constants";
 import { useState } from "react";
@@ -69,7 +69,7 @@ export default function CalendarApp() {
 
     return (
         <div>
-            <div className='calendar-app'>
+            <div>
                 {/* All components needed for Calendar */}
                 <CalendarHeading
                     currentYear={currentYear}
@@ -86,10 +86,8 @@ export default function CalendarApp() {
                     currentYear={currentYear}
                     onDayClick={handleDayClick}
                 />
-  	            {/* 
-  	            
-  	            <EventPopup ... />
-  	            <EventsList ... /> */}            
+                <EventForm />
+  	            {/* <EventsList ... /> */}            
             </div>
         </div>
     );
