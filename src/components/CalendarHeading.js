@@ -7,7 +7,7 @@ import { monthsOfYear } from "./constraints.js";
 
 //Month and Year Navigation
 export default function CalendarHeading({ currentYear, onPrevMonth, onNextMonth, currentMonth }) {
-    console.log("Current Month in CalendarHeading:", currentMonth);
+    // console.log("Current Month in CalendarHeading:", currentMonth);
     return (
         <div className="flex items-center space-x-28">
           <div className="inline-flex space-x-2">

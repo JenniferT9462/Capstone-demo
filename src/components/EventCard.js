@@ -6,18 +6,18 @@ import { monthsOfYear } from "./constraints.js";
 //Displays an individual event and provides options to edit or delete.
 export default function EventCard({ event, onEdit, onDelete }) {
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2x">
-      <div className="md:flex">
-        <div className="p-4">
+    <div className="w-1/2 h-28 bg-[#d12cf6] p-6 rounded-xl flex items-center mb-8">
+      <div className="flex flex-col items-center w-1/4 border-r border-white/50">
+        <div className="text-[clamp(.6rem,1.4vw,1.6rem)]">
           {`
             ${monthsOfYear[event.date.getMonth()]} 
             ${event.date.getDate()}, 
             ${event.date.getFullYear()}
           `}
         </div>
-        <div>{event.time}</div>
+        <div className="text-[clamp(1rem,1.5vw,2rem)] leading-8 font-bold">{event.time}</div>
       </div>
-      <div className="event-text">
+      <div className="text-[clamp(1.2rem,1vw,1.4rem)] leading-8 w-[70%] px-12 pl-4 break-words">
             {event.text}
       </div>
       <div className="event-buttons">

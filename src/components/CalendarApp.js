@@ -120,6 +120,7 @@ export default function CalendarApp() {
   return (
     <div>
       <div className="py-2">
+        <h1 className="text-4xl">Calendar</h1>
         {/* All components needed for Calendar */}
         <div className="border-2 rounded-md inline-block w-fit">
           <CalendarHeading
