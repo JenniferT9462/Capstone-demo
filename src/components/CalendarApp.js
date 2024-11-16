@@ -4,6 +4,7 @@ import WeekDays from "./WeekDays";
 import DaysGrid from "./DaysGrid";
 import EventForm from "./EventForm";
 import EventsList from "./EventsList";
+import TodoForm from "./TodoForm";
 import SideBar from "./SideBar";
 // import { monthsOfYear, daysOfWeek } from "./constants";
 import { useState } from "react";
@@ -118,14 +119,21 @@ export default function CalendarApp() {
 
   //Todos section logic
   const [todos, setTodos] = useState([
-    { id: 1, title: "Buy groceries", completed: false },
-    { id: 2, title: "Finish Project", completed: true },
+    // { id: 1, title: "Buy groceries", completed: false },
+    // { id: 2, title: "Finish Project", completed: true },
   ]);
 
+
+  //State for Todos
+
   //Functions that handle add, edit and toggle completion
-  const handleAddTodo = (title) => {
-    const newTodo = { id: Date.now(), title, completed: false };
-    setTodos([...todos, newTodo]);
+  // const handleAddTodo = (title) => {
+  //   const newTodo = { id: Date.now(), title, completed: false };
+  //   setTodos([...todos, newTodo]);
+  // };
+
+  const handleAddTodo = (newTodo) => {
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
   const handleToggleTodo = (id) => {
@@ -139,7 +147,8 @@ export default function CalendarApp() {
     setTodos(todos.filter((todo) => todo.id !== id))
   };
 
-
+  console.log("Events:", events);
+  console.log("Todos:", todos);
   
 
   return (
@@ -184,6 +193,7 @@ export default function CalendarApp() {
           onEdit={handleEditEvent}
           onDelete={handleEventDelete}
         />
+        <TodoForm onAddTodo={handleAddTodo} />
       </div>
         <SideBar
           events={events}
