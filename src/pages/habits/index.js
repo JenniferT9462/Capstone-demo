@@ -1,5 +1,6 @@
 import HabitForm from "@/components/HabitTracker/HabitForm";
 import HabitList from "@/components/HabitTracker/HabitList";
+import HabitTracker from "@/components/HabitTracker/HabitTracker";
 
 import { useState } from 'react';
 
@@ -23,6 +24,9 @@ export default function HabitPage() {
             <h1 className="text-4xl font-bold text-center">Habit Tracker</h1>
             <HabitForm addHabit={addHabit}/>
             <HabitList habits={habits} updateHabitProgress={updateHabitProgress}/>
+            <HabitTracker
+                habits={habits}
+            />
         </div>
     );
 }
