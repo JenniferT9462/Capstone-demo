@@ -1,6 +1,9 @@
 import HabitForm from "@/components/HabitTracker/HabitForm";
 import HabitList from "@/components/HabitTracker/HabitList";
-import HabitTracker from "@/components/HabitTracker/HabitTracker";
+// import HabitTracker from "@/components/HabitTracker/HabitTracker";
+import HabitProgressChart from "@/components/HabitTracker/HabitProgressChart";
+import {Chart, ArcElement} from 'chart.js'
+Chart.register(ArcElement);
 
 import { useState } from 'react';
 
@@ -24,9 +27,8 @@ export default function HabitPage() {
             <h1 className="text-4xl font-bold text-center">Habit Tracker</h1>
             <HabitForm addHabit={addHabit}/>
             <HabitList habits={habits} updateHabitProgress={updateHabitProgress}/>
-            <HabitTracker
-                habits={habits}
-            />
+           
+            <HabitProgressChart habits={habits}/>
         </div>
     );
 }
