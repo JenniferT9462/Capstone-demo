@@ -4,6 +4,7 @@ import WeekDays from "./WeekDays";
 import DaysGrid from "./DaysGrid";
 import EventForm from "./EventForm";
 import EventsList from "./EventsList";
+import SideBar from "./SideBar";
 // import { monthsOfYear, daysOfWeek } from "./constants";
 import { useState } from "react";
 
@@ -115,6 +116,30 @@ export default function CalendarApp() {
     setEvents(events.filter((event) => event.id !== eventId));
   };
 
+  //Todos section logic
+  const [todos, setTodos] = useState([
+    { id: 1, title: "Buy groceries", completed: false },
+    { id: 2, title: "Finish Project", completed: true },
+  ]);
+
+  //Functions that handle add, edit and toggle completion
+  const handleAddTodo = (title) => {
+    const newTodo = { id: Date.now(), title, completed: false };
+    setTodos([...todos, newTodo]);
+  };
+
+  const handleToggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    )
+   );
+  };
+
+  const handleDeleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id))
+  };
+
+
   
 
   return (
@@ -160,6 +185,12 @@ export default function CalendarApp() {
           onDelete={handleEventDelete}
         />
       </div>
+        <SideBar
+          events={events}
+          todos={todos}
+          onToggleTodo={handleToggleTodo}
+          onDeleteTodo={handleDeleteTodo}
+          />
     </div>
   );
 }
