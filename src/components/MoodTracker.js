@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile, faFrown, faMeh } from '@fortawesome/free-solid-svg-icons';
 import MoodIcon from './MoodIcon';
+import MoodChart from './MoodChart';
 import { useState } from 'react';
 
 export default function MoodTracker() {
@@ -23,7 +24,7 @@ export default function MoodTracker() {
         }
         
     };
-
+    console.log(moodLogs);
     return (
         <div>
             <h2>How are you feeling today?</h2>
@@ -52,6 +53,8 @@ export default function MoodTracker() {
                         </li>
                     ))}
                 </ul>
+                <h3 className="text-blue-500 mt-4">Mood Chart</h3>
+                <MoodChart moodLogs={moodLogs} />
             </div>
         </div>
     );
