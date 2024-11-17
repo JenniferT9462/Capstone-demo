@@ -1,3 +1,4 @@
+import Journal from "@/components/Journal";
 import MoodTracker from "@/components/MoodTracker";
 
 export default function JournalPage() {
@@ -7,6 +8,9 @@ export default function JournalPage() {
             <div className="bg-white p-4 rounded-md w-1/2 shadow-md fixed right-12 mt-12">
                 <h2 className="text-blue-500">Moods</h2>
                 <MoodTracker/>
+            </div>
+            <div>
+                <Journal/>
             </div>
         </div>
     );
