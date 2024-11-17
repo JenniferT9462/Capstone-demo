@@ -1,0 +1,23 @@
+
+.react-calendar {
+  background-color: #dc69f1 !important; 
+  color: #510f75; /* Dark text */
+  border: none;
+  border-radius: 12px; /* Adds rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow */
+}
+
+
+.mood-calendar {
+    width: 80%;
+    margin: 20px;
+    
+  }
+  
+  .mood-icon {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
