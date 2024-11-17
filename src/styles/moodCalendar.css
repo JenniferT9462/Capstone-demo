@@ -4,7 +4,20 @@
   color: #510f75; /* Dark text */
   border: none;
   border-radius: 12px; /* Adds rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* Adds shadow */
+}
+.react-calendar__tile {
+  border-radius: 8px;
+  
+}
+.react-calendar__tile--now {
+  background-color: rgb(168, 25, 220) !important;
+  color: rgb(224, 205, 243) !important;
+}
+.react-calendar__tile--active {
+  background-color: #6f3def !important; /* Active tile background */
+  color: white; /* Active tile text color */
+  border-radius: 10px;
 }
 
 
