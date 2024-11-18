@@ -27,7 +27,7 @@ export default function Journal() {
 
 
     return (
-        <div className="bg-white rounded-md w-1/3 ml-8 mt-12 text-blue-500 p-4 shadow-md">
+        <div className="bg-white rounded-md w-1/3 text-blue-500 p-4 shadow-md">
             <form onSubmit={handleSubmit} className="flex flex-col">
                 <h2 className="text-2xl text-center">Journal</h2>
                 <p>What do you wish to record?</p>

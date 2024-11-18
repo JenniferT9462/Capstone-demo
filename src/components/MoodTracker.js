@@ -26,7 +26,8 @@ export default function MoodTracker() {
     };
     console.log(moodLogs);
     return (
-        <div>
+        <div className='w-1/3 rounded-md shadow-md bg-white'>
+            <h2 className="text-blue-500">Moods</h2>
             <h2>How are you feeling today?</h2>
             <div>
                 <div className="grid grid-cols-3 gap-4">

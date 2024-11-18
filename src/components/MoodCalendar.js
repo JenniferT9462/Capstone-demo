@@ -35,6 +35,7 @@ export default function MoodCalendar() {
     
     return (
         <div className="mood-calendar">
+          <h1 className="text-2xl text-white">Calendar</h1>
         <Calendar
             onClickDay={onDayClick}
             tileContent={({ date, view }) => {
