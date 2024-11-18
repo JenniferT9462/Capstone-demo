@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FeatureCards from "@/components/FeatureCards";
+import FeatureCards from "@/components/Main/FeatureCards";
 
 
 

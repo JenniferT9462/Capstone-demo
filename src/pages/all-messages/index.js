@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/Main/NavBar";
 
 export default function Messages() {
     const [messages, setMessages] = useState([]);

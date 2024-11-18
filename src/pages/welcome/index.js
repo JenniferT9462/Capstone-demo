@@ -1,6 +1,6 @@
 import Link from "next/link";
-import FeatureCards from "@/components/FeatureCards";
-import Navbar from "@/components/NavBar";
+import FeatureCards from "@/components/Main/FeatureCards";
+import Navbar from "@/components/Main/NavBar";
 
 export default function WelcomePage() {
     return (

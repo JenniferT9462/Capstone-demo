@@ -1,7 +1,7 @@
-import Journal from "@/components/Journal";
-import MoodCalendar from "@/components/MoodCalendar";
-import MoodTracker from "@/components/MoodTracker";
-import Navbar from "@/components/NavBar";
+import Journal from "@/components/JournalPage/Journal";
+import MoodCalendar from "@/components/JournalPage/MoodCalendar";
+import MoodTracker from "@/components/JournalPage/MoodTracker";
+import Navbar from "@/components/Main/NavBar";
 
 export default function JournalPage() {
     return (

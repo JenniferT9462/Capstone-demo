@@ -1,4 +1,4 @@
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Main/NavBar';
 
 const meta = {
   component: NavBar,
