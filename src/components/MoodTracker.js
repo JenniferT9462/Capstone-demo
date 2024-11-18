@@ -39,7 +39,15 @@ export default function MoodTracker() {
                     <button onClick={() => handleMoodSelect('Neutral')} className="p-4 rounded-md shadow-md hover:bg-gray-100">
                         <MoodIcon mood={'neutral'} />
                     </button>
-
+                    <button onClick={() => handleMoodSelect('Excited')} className="p-4 rounded-md shadow-md hover:bg-gray-100">
+                        <MoodIcon mood={'excited'} />
+                    </button>
+                    <button onClick={() => handleMoodSelect('Angry')} className="p-4 rounded-md shadow-md hover:bg-gray-100">
+                        <MoodIcon mood={'angry'} />
+                    </button>
+                    <button onClick={() => handleMoodSelect('Sleepy')} className="p-4 rounded-md shadow-md hover:bg-gray-100">
+                        <MoodIcon mood={'sleepy'} />
+                    </button>
                 </div>
             </div>
             <button className="bg-blue-500 text-white rounded-lg p-1 mt-4" onClick={handleMoodLogs}>Log Mood</button>

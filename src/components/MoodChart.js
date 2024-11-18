@@ -49,6 +49,21 @@ export default function MoodChart({ moodLogs }){
                 data: labels.map(date => moodCount[date]?.Neutral || 0),
                 backgroundColor: "rgba(255, 206, 86, 0.6)",
             },
+            {
+                label: "Excited",
+                data: labels.map(date => moodCount[date]?.Excited || 0),
+                backgroundColor: "rgba(255, 165, 0, 0.6)",
+            },
+            {
+                label: "Angry",
+                data: labels.map(date => moodCount[date]?.Angry || 0),
+                backgroundColor: "rgba(255, 0, 0, 0.6)",
+            },
+            {
+                label: "Sleepy",
+                data: labels.map(date => moodCount[date]?.Sleepy || 0),
+                backgroundColor: "rgba(106, 90, 205, 0.6)",
+            },
         ],
     };
     const options = {

@@ -1,6 +1,6 @@
 //Import icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSmile, faFrown, faMeh } from '@fortawesome/free-solid-svg-icons';
+import { faSmile, faFrown, faMeh, faGrinStars, faAngry, faTired } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function MoodIcon({ mood }) {
@@ -11,6 +11,12 @@ export default function MoodIcon({ mood }) {
             return <FontAwesomeIcon icon={faFrown} className="text-blue-500 text-2xl" />;
         case 'neutral':
             return <FontAwesomeIcon icon={faMeh} className="text-gray-500 text-2xl" />;
+        case 'excited':
+            return <FontAwesomeIcon icon={faGrinStars} className="text-orange-500 text-2xl" />;
+        case 'angry':
+            return <FontAwesomeIcon icon={faAngry} className="text-red-500 text-2xl" />;
+        case 'sleepy':
+            return <FontAwesomeIcon icon={faTired} className="text-indigo-500 text-2xl" />;
         default:
             return null;
     }
