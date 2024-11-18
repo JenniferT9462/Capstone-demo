@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FeatureCards from "@/components/Main/FeatureCards";
 import Navbar from "@/components/Main/NavBar";
+import LogInCard from "@/components/Main/LogInCard";
 
 export default function WelcomePage() {
     return (
@@ -24,9 +25,7 @@ export default function WelcomePage() {
                 <div>
                     {/* Haven't decided if I want to put this on the NavBar or make a login page. */}
                     <h2 className="text-lg md:text-xl font-light mb-6">Log In to Save your progress.</h2>
-                    <Link href="/login" className="font-bold bg-white text-blue-500 px-4 py-2 rounded hover:bg-blue-700 hover:text-white">
-                        Log In
-                    </Link>
+                    <LogInCard/>
                 </div>
             </div>
         </div>

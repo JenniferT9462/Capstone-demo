@@ -1,27 +1,36 @@
 import React from "react";
-import { uid } from 'uid';
+// import { uid } from 'uid';
 import { useState } from "react";
+// import { useRouter } from "next/router";
 
 
 export default function LogInCard() {
+    // const router = useRouter();
    //Step 1: create state
     const [email, setEmail] = useState("");
-    const passkey = uid();
+    const [passkey, setPasskey] = useState("");
+    //const passkey = uid();
 
-    function handleEmailChange(event) {
-        setEmail(event.target.value)
-    }
+   
 
-    function handleLogin() {
-        localStorage.setItem("userEmail", email);
-        localStorage.setItem("userPassKey", passkey);
+    function  handleLogin() {
+        const isValid = email && passkey;
+        if(isValid) {
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userPassKey", passkey);
+            // router.push("/dashboard");
+        } else {
+            alert("Please enter valid credentials.");
+          }
+        
 
-        //Send the email and passkey to my backend for verification
-        fetch('/api/storeUser', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, passkey }),
-        });
+        // //Send the email and passkey to my backend for verification
+        // fetch('/api/storeUser', {
+        //     method: 'POST',
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({ email, passkey }),
+        // });
+        
        
     };
 
@@ -34,10 +43,18 @@ export default function LogInCard() {
                 <input
                     type="email"
                     value={email}
-                    onChange={handleEmailChange}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="border border-gray-300 p-2 rounded mb-4"
+                    className="block border-2 border-gray-300 p-2 rounded mb-4"
                 />
+                <input
+                    type="password"
+                    placeholder="Passkey"
+                    value={passkey}
+                    onChange={(e) => setPasskey(e.target.value)}
+                    className="block border-2 my-2 p-2 border-gray-300 rounded"
+                />
+
                 <button
                     onClick={handleLogin}
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
