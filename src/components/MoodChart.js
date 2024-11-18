@@ -24,7 +24,7 @@ export default function MoodChart({ moodLogs }){
     //Process moodLogs to create chart data
     const moodCount = moodLogs.reduce((acc, log) => {
         const date = log.date.toISOString().split("T")[0]; //Extract data string
-        acc[date] = acc[date] || { Happy: 0, Sad: 0, Neutral: 0 }
+        acc[date] = acc[date] || { Happy: 0, Sad: 0, Neutral: 0, Excited: 0, Angry: 0, Sleepy: 0 }
         acc[date][log.mood] += 1; //Increment mood count for the date
         return acc;
     }, {});
