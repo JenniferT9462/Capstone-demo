@@ -7,13 +7,13 @@ export default function Navbar() {
   return (
     
       
-    <nav className="bg-blue-600 px-4 py-2 flex items-center justify-between">
+    <nav className="bg-blue-600 px-4 py-2 flex items-center justify-between shadow-lg">
     <div className='flex items-center space-x-2'>
-        <div>
+        <div className='text-white'>
           {/* Logo */}
           <Logo/>
         </div>
-        <h1 className="text-xl font-bold">
+        <h1 className="text-xl text-white font-bold">
           Planner App
         </h1>
       </div>
