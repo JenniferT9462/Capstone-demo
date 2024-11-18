@@ -22,7 +22,8 @@
     "react-calendar": "^5.1.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "resend": "^4.0.1-alpha.0"
+    "resend": "^4.0.1-alpha.0",
+    "uid": "^2.0.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
