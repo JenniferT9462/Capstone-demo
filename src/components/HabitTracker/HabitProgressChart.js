@@ -1,33 +1,38 @@
-
-import { Pie } from "react-chartjs-2";
+import React, { useState} from "react";
+import { PieChart, Pie, Tooltip, Cell } from "recharts";
 
 
 export default function HabitProgressChart({ habits }) {
-    
-        const data = {
-          labels: habits.map(habit => habit.name),
-          datasets: [
-            {
-              data: habits.map(habit => habit.progress),
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-              hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-            },
-          ],
-        };
-        const options = {
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
-                },
-                tooltip: {
-                    enabled: true,
-                },
-            },
-        };
+    const [activeIndex, setActiveIndex] = useState(-1);
+    const data = habits.map(habit => ({
+      name: habit.name,
+      progress: habit.progress / habit.frequency
+    }));
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const onPieEnter = (_, index) => {
+      setActiveIndex(index);
+    }
+  
         return (
-          <div className="w-full max-w-md mx-auto mt-4 p-4">
-            <Pie data={data} options={options}/>
+          <div>
+              <PieChart width={700} height={700}>
+                <Pie 
+                  activeIndex={activeIndex}
+                  data={data}
+                  dataKey={"progress"}
+                  outerRadius={250}
+                  fill="green"
+                  onMouseEnter={onPieEnter}
+                  className="cursor-pointer outline-none">
+                    {data.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
+                    ))}
+                  </Pie>
+                  <Tooltip/>
+              </PieChart>
+
+            
           </div>
         );
       };

@@ -2,14 +2,9 @@ import HabitForm from "@/components/HabitTracker/HabitForm";
 import HabitList from "@/components/HabitTracker/HabitList";
 // import HabitTracker from "@/components/HabitTracker/HabitTracker";
 import HabitProgressChart from "@/components/HabitTracker/HabitProgressChart";
-import {Chart, ArcElement} from 'chart.js'
-import { Chart as ChartJS, Tooltip, Legend } from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
 
-Chart.register(ArcElement);
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function HabitPage() {
     const [habits, setHabits] = useState([]);
@@ -32,7 +27,7 @@ export default function HabitPage() {
             <HabitForm addHabit={addHabit}/>
             <HabitList habits={habits} updateHabitProgress={updateHabitProgress}/>
            
-            <HabitProgressChart habits={habits}/>
+            <HabitProgressChart habits={habits} />
         </div>
     );
 }
