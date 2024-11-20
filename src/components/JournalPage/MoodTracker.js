@@ -2,12 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile, faFrown, faMeh } from '@fortawesome/free-solid-svg-icons';
 import MoodIcon from './MoodIcon';
-import MoodChart from './MoodChart';
+
 import { useState } from 'react';
 
 export default function MoodTracker() {
     //Moods selection TODO: add 2 more
-    const moods = ['happy', 'sad', 'neutral'];
+    const moods = ['happy', 'sad', 'neutral', 'excited', 'angry', 'sleepy'];
     const [mood, setMood] = useState(null);
     const [moodLogs, setMoodLogs] = useState([]);
 
@@ -24,7 +24,14 @@ export default function MoodTracker() {
         }
         
     };
+
+    //Transform moodLogs for chart
+    const moodCounts = moods.map((moodName) => ({
+        name: moodName, //label
+        count: moodLogs.filter((log) => log.mood === moodName).length, //value
+    }))
     console.log(moodLogs);
+    console.log(moodCounts)
     return (
         <div className='w-1/3 rounded-md shadow-md bg-white'>
             <h2 className="text-blue-500">Moods</h2>
@@ -63,7 +70,7 @@ export default function MoodTracker() {
                     ))}
                 </ul>
                 <h3 className="text-blue-500 mt-4">Mood Chart</h3>
-                <MoodChart moodLogs={moodLogs} />
+  
             </div>
         </div>
     );
