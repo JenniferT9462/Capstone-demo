@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/Main/NavBar";
 
 export default function MessagePage() {
     const [name, setName] = useState("");
