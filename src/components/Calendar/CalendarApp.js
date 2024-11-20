@@ -4,8 +4,8 @@ import WeekDays from "./WeekDays";
 import DaysGrid from "./DaysGrid";
 import EventForm from "./EventForm";
 import EventsList from "./EventsList";
-import TodoForm from "./TodoForm";
-import SideBar from "./SideBar";
+import TodoForm from "../TodoForm";
+import SideBar from "../SideBar";
 // import { monthsOfYear, daysOfWeek } from "./constants";
 import { useState } from "react";
 

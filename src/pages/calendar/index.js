@@ -1,4 +1,4 @@
-import CalendarApp from "@/components/CalendarApp";
+import CalendarApp from "@/components/Calendar/CalendarApp";
 
 
 
