@@ -22,10 +22,10 @@ export default function Navbar() {
           <Link href="/" className="text-white text-xl md:text-sm hover:text-blue-300">
             Home
           </Link>
-          <Link href="/Calendar" className="text-white text-xl md:text-sm hover:text-blue-300">
+          <Link href="/calendar" className="text-white text-xl md:text-sm hover:text-blue-300">
             Calendar
           </Link>
-          <Link href="/Habits" className="text-white text-xl md:text-sm hover:text-blue-300">
+          <Link href="/habits" className="text-white text-xl md:text-sm hover:text-blue-300">
             Habits
           </Link>
           <Link href="/journal" className="text-white text-xl md:text-sm hover:text-blue-300">

@@ -1,6 +1,6 @@
 export default function SideBar({ events, todos, onToggleTodo, onDeleteTodo }) {
   return (
-    <div className="w-1/3 bg-gray-100 text-blue-500 rounded-md p-4 fixed right-20 top-10 shadow-lg">
+    <div className="w-1/3 bg-gray-100 text-blue-500 rounded-md p-4 shadow-lg">
       <h2 className="text-lg font-bold mb-2">Events</h2>
       <ul>
         {events.map((event) => (
