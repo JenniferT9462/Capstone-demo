@@ -7,7 +7,7 @@ import EventsList from "./EventsList";
 import TodoForm from "../TodoForm";
 import SideBar from "../SideBar";
 // import { monthsOfYear, daysOfWeek } from "./constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function CalendarApp() {
   //State and logic:
@@ -82,24 +82,61 @@ export default function CalendarApp() {
   const [editingEvent, setEditingEvent] = useState(null);
 
   // Function to handle event submission
-  const handleEventSubmit = () => {
+  const handleEventSubmit = async () => {
     const newEvent = {
       id: editingEvent ? editingEvent.id : Date.now(),
       date: selectedDate,
       time: `${eventTime.hours}:${eventTime.minutes}`,
       text: eventText,
     };
-
+    console.log(newEvent);
     const updatedEvents = editingEvent
       ? events.map((event) => (event.id === editingEvent.id ? newEvent : event))
       : [...events, newEvent];
 
-      setEvents(updatedEvents);
-      setShowEventPopup(false);
-      setEditingEvent(null);
-      setEventText("");
-      setEventTime({ hours: "00", minutes: "00" });
+    try {
+      const response = await fetch("/api/saveEvent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEvent),
+      });
+      if (response.ok) {
+        setEvents(updatedEvents);
+        setShowEventPopup(false);
+        setEditingEvent(null);
+        setEventText("");
+        setEventTime({ hours: "00", minutes: "00" });
+      } else {
+        console.error("Failed to save event:", await response.text());
+      }
+    } catch (error) {
+      console.error("Failed to save event:", error);
+    }
   };
+
+  // Fetch events from the API
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch("/api/getEvents");
+      if (!response.ok) {
+        throw new Error("Failed to fetch events");
+      }
+      const data = await response.json();
+      console.log("Raw events data:", data.events); // Log raw data
+      const parsedEvents = data.events.map((event) => ({
+        ...event,
+        date: new Date(event.date), // Convert date strings back to Date objects
+      }));
+      setEvents(parsedEvents);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  // Fetch events on component mount
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   // Functions for editing and deleting events
   const handleEditEvent = (event) => {
@@ -122,34 +159,53 @@ export default function CalendarApp() {
     // { id: 1, title: "Buy groceries", completed: false },
     // { id: 2, title: "Finish Project", completed: true },
   ]);
+  // Fetch events from the API
+  const fetchTodos = async () => {
+    try {
+      const response = await fetch("/api/getTodos");
+      if (!response.ok) {
+        throw new Error("Failed to fetch todos");
+      }
+      const data = await response.json();
+      console.log("Raw todos data:", data.todos); // Log raw data
+      const parsedTodos = data.todos.map((todo) => ({
+        ...todo,
+        date: new Date(todo.date), // Convert date strings back to Date objects
+      }));
+      setTodos(parsedTodos);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+    }
+  };
 
-
-  //State for Todos
+  // Fetch events on component mount
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   //Functions that handle add, edit and toggle completion
   // const handleAddTodo = (title) => {
   //   const newTodo = { id: Date.now(), title, completed: false };
   //   setTodos([...todos, newTodo]);
   // };
-
   const handleAddTodo = (newTodo) => {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
   const handleToggleTodo = (id) => {
     setTodos(
-      todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    )
-   );
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   const handleDeleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id))
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   console.log("Events:", events);
   console.log("Todos:", todos);
-  
 
   return (
     <div>
@@ -184,7 +240,6 @@ export default function CalendarApp() {
               selectedDate={selectedDate}
               editingEvent={editingEvent}
               onSubmit={handleEventSubmit}
-              
             />
           </div>
         )}
@@ -195,12 +250,12 @@ export default function CalendarApp() {
         />
         <TodoForm onAddTodo={handleAddTodo} />
       </div>
-        <SideBar
-          events={events}
-          todos={todos}
-          onToggleTodo={handleToggleTodo}
-          onDeleteTodo={handleDeleteTodo}
-          />
+      <SideBar
+        events={events}
+        todos={todos}
+        onToggleTodo={handleToggleTodo}
+        onDeleteTodo={handleDeleteTodo}
+      />
     </div>
   );
 }
