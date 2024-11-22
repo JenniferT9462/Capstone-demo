@@ -35,7 +35,7 @@ export default function LogInCard() {
     };
 
     return (
-        <div className="bg-white text-indigo-500 rounded-lg p-6 shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+        <div className="w-1/3 m-auto bg-white text-indigo-500 rounded-lg p-6 shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
             <h1 className="text-4xl font-bold mb-6">
                 Log In
             </h1>
