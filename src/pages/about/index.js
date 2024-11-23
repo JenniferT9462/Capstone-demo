@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Link from "next/link";
+
 import Navbar from "@/components/Main/NavBar";
+import LinkedinLogo from "@/components/Main/linkedin";
+import GitHubLogo from "@/components/Main/github";
 
 export default function ContactMePage() {
   //useState hook used to store name, email, message and status
@@ -39,6 +42,7 @@ export default function ContactMePage() {
       setStatus("An error occurred. Please try again.");
     }
   }
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
@@ -62,6 +66,15 @@ export default function ContactMePage() {
         </div>
         <div className="p-4 w-2/3">
           <h1 className="text-4xl">About | The Creator</h1>
+          <div className="flex space-x-4 items-center text-xl font-semibold">
+            <span>Follow me! |</span> 
+            <Link href="https://www.linkedin.com/in/jennifer-tarleton-11290350/" target="_blank">
+              <LinkedinLogo/>
+            </Link> 
+            <Link href="https://github.com/JenniferT9462" target="_blank">
+              <GitHubLogo/>
+            </Link>
+          </div>
           <p>
             I am a full-stack development student with a background in graphic
             design. My creativity and attention to detail from design have
