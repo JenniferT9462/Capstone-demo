@@ -208,7 +208,7 @@ export default function CalendarApp() {
   console.log("Todos:", todos);
 
   return (
-    <div>
+    <div className="ml-12">
       <div className="py-2">
         <h1 className="text-4xl">Calendar</h1>
         {/* All components needed for Calendar */}
@@ -228,34 +228,37 @@ export default function CalendarApp() {
             currentYear={currentYear}
             onDayClick={handleDayClick}
           />
+          {showEventPopup && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <EventForm
+                eventTime={eventTime}
+                setEventTime={setEventTime}
+                eventText={eventText}
+                setEventText={setEventText}
+                onClose={handleClosePopup}
+                selectedDate={selectedDate}
+                editingEvent={editingEvent}
+                onSubmit={handleEventSubmit}
+              />
+            </div>
+          )}
         </div>
-        {showEventPopup && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <EventForm
-              eventTime={eventTime}
-              setEventTime={setEventTime}
-              eventText={eventText}
-              setEventText={setEventText}
-              onClose={handleClosePopup}
-              selectedDate={selectedDate}
-              editingEvent={editingEvent}
-              onSubmit={handleEventSubmit}
-            />
-          </div>
-        )}
         <EventsList
-          events={events}
-          onEdit={handleEditEvent}
-          onDelete={handleEventDelete}
-        />
-        <TodoForm onAddTodo={handleAddTodo} />
+            events={events}
+            onEdit={handleEditEvent}
+            onDelete={handleEventDelete}
+          />
+        <div className="flex space-x-10">
+          
+          <TodoForm onAddTodo={handleAddTodo} />
+          <SideBar
+            events={events}
+            todos={todos}
+            onToggleTodo={handleToggleTodo}
+            onDeleteTodo={handleDeleteTodo}
+          />
+        </div>
       </div>
-      <SideBar
-        events={events}
-        todos={todos}
-        onToggleTodo={handleToggleTodo}
-        onDeleteTodo={handleDeleteTodo}
-      />
     </div>
   );
 }

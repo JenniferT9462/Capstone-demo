@@ -11,6 +11,7 @@ export default function CalendarPage() {
             {/* <CalendarApp/> */}
             <div className="min-h-screen">
                 <CalendarApp/>
+                
             </div>
         </div>
     );  

@@ -28,7 +28,7 @@ export default function TodoForm({ onAddTodo}) {
         }
     };
     return (
-        <div className="w-1/3 bg-white rounded-md shadow-md">
+        <div className="w-1/3 bg-white rounded-md shadow-md flex flex-col justify-between h-full">
             <form onSubmit={handleSubmit} className="mt-4">
                 <input
                     type="text"
@@ -39,7 +39,7 @@ export default function TodoForm({ onAddTodo}) {
                 />
                 <button
                     type="submit"
-                    className="w-full text-blue-500 py-2 rounded-md"
+                    className="w-full text-white py-2 bg-blue-400 rounded-md"
                     >
                         Add Todo
                 </button>

@@ -64,7 +64,7 @@ export default function MoodTracker() {
                 <h3 className='text-blue-500'>Mood History</h3>
                 <ul>
                     {moodLogs.map((log, index) => (
-                        <li key={index}>
+                        <li key={index} className='text-blue-400'>
                             {log.date.toDateString()}: {log.mood}
                         </li>
                     ))}
