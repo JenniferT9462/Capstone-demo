@@ -33,7 +33,7 @@ export default function MoodTracker() {
     console.log(moodLogs);
     console.log(moodCounts)
     return (
-        <div className='w-1/3 rounded-md shadow-md bg-white'>
+        <div className='w-72  rounded-md shadow-md bg-white'>
             <h2 className="text-blue-500">Moods</h2>
             <h2>How are you feeling today?</h2>
             <div>
@@ -69,7 +69,7 @@ export default function MoodTracker() {
                         </li>
                     ))}
                 </ul>
-                <h3 className="text-blue-500 mt-4">Mood Chart</h3>
+                
   
             </div>
         </div>

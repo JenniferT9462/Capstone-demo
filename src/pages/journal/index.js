@@ -9,7 +9,7 @@ export default function JournalPage() {
             <Navbar/>
            <h1 className="py-4 text-center text-4xl text-white">Journal Page</h1>
            
-           <div>
+           <div className="flex justify-center items-center mr-12">
                 <MoodCalendar/>
                 <MoodTracker/>
             </div>
