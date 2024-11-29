@@ -1,17 +1,74 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Journal() {
     // const itemDate = moment(item.date).fromNow();
     const [journalEntry, setJournalEntry] = useState('');
     const [entryLog, setEntryLog] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (journalEntry.trim()) {
-            setEntryLog([...entryLog, { date: new Date(), journalEntry }])
-            setJournalEntry('');
+        if (!journalEntry.trim()) {
+            console.error("Journal entry is empty");
+            return;
+        }
+
+        const newEntry = {
+            date: new Date().toISOString(),
+            journalEntry,
+        }
+        
+        try {
+            const response = await fetch('/api/saveJournalEntry', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(newEntry),
+            });
+            if (response.ok) {
+                if (journalEntry.trim()) {
+                    setEntryLog([...entryLog, newEntry ])
+                    setJournalEntry('');
+                }
+            } else {
+                console.error("Failed to save event:", await response.text());
+              }
+
+        } catch (error) {
+            console.error("Failed to save event:", error);
         }
     };
+
+    useEffect(() => {
+        fetchJournalEntries();
+    }, []);
+
+    const fetchJournalEntries = async () => {
+        try {
+            const response = await fetch('/api/getJournalEntries', {
+                method: 'GET',
+                headers: { "Content-Type": "application/json" },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (Array.isArray(data.entries)) {
+                    // Filter out any empty objects
+                const validEntries = data.entries.filter(
+                    (entry) => entry.journalEntry && entry.date
+                );
+                    setEntryLog(validEntries);
+                } else {
+                    console.error("Fetched data is not an array:", data);
+                    setEntryLog([]);
+                }
+                 
+            } else {
+                console.error("Failed to fetch journal entries:", await response.text());
+            }
+        } catch (error) {
+            console.error("Error fetching journal entries:", error);
+        }
+    }
+
 
     const handleEntryChange = (event) => {
         setJournalEntry(event.target.value);

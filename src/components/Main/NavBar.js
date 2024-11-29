@@ -14,22 +14,25 @@ export default function Navbar() {
           <Logo/>
         </div>
         <h1 className="text-xl text-white font-bold">
-          Planner App
+          ZenFlow
         </h1>
       </div>
       {/* Nav links */}
       <div className="flex space-x-4 md:space-x-2">
-          <Link href="/" className="text-white text-xl md:text-sm hover:text-blue-300">
+          <Link href="/welcome" className="text-white text-xl md:text-sm hover:text-blue-300">
             Home
           </Link>
-          <Link href="/Calendar" className="text-white text-xl md:text-sm hover:text-blue-300">
+          <Link href="/calendar" className="text-white text-xl md:text-sm hover:text-blue-300">
             Calendar
           </Link>
-          <Link href="/Habits" className="text-white text-xl md:text-sm hover:text-blue-300">
+          <Link href="/habits" className="text-white text-xl md:text-sm hover:text-blue-300">
             Habits
           </Link>
           <Link href="/journal" className="text-white text-xl md:text-sm hover:text-blue-300">
             Journal
+          </Link>
+          <Link href="/about" className="text-white text-xl md:text-sm hover:text-blue-300">
+            About
           </Link>
       </div>
     </nav>
